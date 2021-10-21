@@ -1,0 +1,8 @@
+#ignoring .idea files
+/.idea
+
+#ignoring the output folder
+/out
+
+#ignoring the .iml files
+*.iml
