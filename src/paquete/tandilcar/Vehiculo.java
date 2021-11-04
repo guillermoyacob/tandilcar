@@ -21,7 +21,7 @@ public abstract class Vehiculo {
         this.km = km;
         this.combustible = combustible;
         this.MODELO = modelo;
-        this.MARCA = marca.toLowerCase();
+        this.MARCA = marca;
         this.precio = precio;
         this.serviceAlDia = serviceAlDia;
 
@@ -29,9 +29,6 @@ public abstract class Vehiculo {
 
         Vehiculo.ID++;
         this.id=Vehiculo.ID;
-
-        TodosLosVehiculos.listaVehiculos.add(this);
-
     }
 
     public abstract Integer nivelDeDesgaste();

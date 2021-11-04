@@ -6,9 +6,14 @@ import java.util.Objects;
 
 public class TodosLosVehiculos {
 
-    public static List<Vehiculo> listaVehiculos = new ArrayList<Vehiculo>();
+    private List<Vehiculo> listaVehiculos = new ArrayList<Vehiculo>();
 
-    public static void mostrarVehiculos()
+    public void agregarVehiculo(Vehiculo vehiculo)
+    {
+        listaVehiculos.add(vehiculo);
+    }
+
+    public void mostrarVehiculos()
     {
         System.out.println("-------------------- Todos los vehiculos ----------------------");
 
@@ -20,7 +25,7 @@ public class TodosLosVehiculos {
         System.out.println("----------------------------------------------------------------");
     }
 
-    public static void mostrarVehiculos(String categoria)
+    public void mostrarVehiculos(String categoria)
     {
         System.out.println("------Vehiculos por categoría "+ categoria+" ---------------------");
 
@@ -36,7 +41,7 @@ public class TodosLosVehiculos {
         System.out.println("------------------------------------------------------------------");
     }
 
-    public static void mostrarVehiculos(Integer nivelDeDesgaste)
+    public void mostrarVehiculos(Integer nivelDeDesgaste)
     {
         System.out.println("------ Vehiculos por nivel de desgaste hasta "+ nivelDeDesgaste + " ---------");
 
@@ -51,7 +56,7 @@ public class TodosLosVehiculos {
         System.out.println("----------------------------------------------------------------------------");
     }
 
-    public static void mostrarVehiculos(String categoria, Integer nivelDeDesgaste)
+    public void mostrarVehiculos(String categoria, Integer nivelDeDesgaste)
     {
         System.out.println("---- Vehiculos por categoria " + categoria + " y nivel de desgaste hasta "+ nivelDeDesgaste + " ---");
 
@@ -66,7 +71,7 @@ public class TodosLosVehiculos {
         System.out.println("------------------------------------------------------------------------------------");
     }
 
-    private static void describirVehiculo(Vehiculo vehiculo)
+    private void describirVehiculo(Vehiculo vehiculo)
     {
         System.out.println(
                 "El vehiculo numero " + vehiculo.getId() + " es del tipo "+ vehiculo.getClass().getSimpleName() + " marca "+ vehiculo.getMARCA() + " modelo " + vehiculo.getMODELO()

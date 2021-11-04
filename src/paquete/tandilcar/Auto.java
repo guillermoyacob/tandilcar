@@ -1,5 +1,7 @@
 package paquete.tandilcar;
 
+import java.util.Objects;
+
 public class Auto extends Vehiculo{
 
     public Auto(Double km, String combustible, Integer modelo, String marca, Double precio, Boolean serviceAlDia) {
@@ -8,13 +10,17 @@ public class Auto extends Vehiculo{
 
     @Override
     public Integer nivelDeDesgaste() {
-        if (this.getServiceAlDia())
-        {
-            return (int) Math.round(this.getKm() / this.getAntiguedad() / 100);
+
+        if (Objects.equals(this.getAntiguedad(), 0)) {
+            return 0;
         }
-        else
-        {
-            return (int) Math.round(this.getKm() / this.getAntiguedad() / 10);
+        else {
+            if (this.getServiceAlDia()) {
+                return (int) Math.round(this.getKm() / this.getAntiguedad() / 100);
+            }
+            else {
+                return (int) Math.round(this.getKm() / this.getAntiguedad() / 10);
+            }
         }
     }
 }
