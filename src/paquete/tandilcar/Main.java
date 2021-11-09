@@ -22,40 +22,6 @@ public class Main {
         Vehiculo VolkswagenGolf = new Auto(190000.00, "Nafta", 2015, "Volkswagen", 490000.00, true);
         Vehiculo CitroenC3 = new Auto(220000.00, "Nafta", 2018, "Volkswagen", 690000.00, true);
 
-        TodosLosVehiculos CatalogoCompleto = new TodosLosVehiculos();
-        CatalogoCompleto.agregarVehiculo(Peugeot504);
-        CatalogoCompleto.agregarVehiculo(Renault12);
-        CatalogoCompleto.agregarVehiculo(FordF100);
-        CatalogoCompleto.agregarVehiculo(Fiat600);
-        CatalogoCompleto.agregarVehiculo(YamahaRX);
-        CatalogoCompleto.agregarVehiculo(ZanellaZB);
-        CatalogoCompleto.agregarVehiculo(MazdaCX3);
-        CatalogoCompleto.agregarVehiculo(MotomelATV);
-        CatalogoCompleto.agregarVehiculo(FordRanger);
-        CatalogoCompleto.agregarVehiculo(Peugeot208);
-        CatalogoCompleto.agregarVehiculo(ToyotaHilux);
-        CatalogoCompleto.agregarVehiculo(ChevroletSilverado);
-        CatalogoCompleto.agregarVehiculo(VolkswagenPolo);
-        CatalogoCompleto.agregarVehiculo(ChevroletCorsa);
-        CatalogoCompleto.agregarVehiculo(FiatSiena);
-        CatalogoCompleto.agregarVehiculo(VolkswagenGolf);
-        CatalogoCompleto.agregarVehiculo(CitroenC3);
-
-        System.out.println("Catálogo de vehículos completo");
-
-        CatalogoCompleto.mostrarVehiculos();
-
-        CatalogoCompleto.mostrarVehiculos("Camioneta");
-        CatalogoCompleto.mostrarVehiculos("Auto");
-        CatalogoCompleto.mostrarVehiculos("Motocicleta");
-
-        CatalogoCompleto.mostrarVehiculos(20);
-        CatalogoCompleto.mostrarVehiculos(60);
-
-        CatalogoCompleto.mostrarVehiculos("Camioneta", 70);
-        CatalogoCompleto.mostrarVehiculos("Auto", 50);
-        CatalogoCompleto.mostrarVehiculos("Motocicleta", 10);
-
         Sucursal TandilCarCentro = new Sucursal("Centro","Rodriguez 715", "de 9:00 a 12:30 y de 17:00 a 20:30");
         Sucursal TandilCarTerminal = new Sucursal("Terminal","Av. Balbín 600", "de 9:00 a 12:30 y de 17:00 a 20:30");
         Sucursal TandilCarDelValle = new Sucursal("Del Valle","Av. Del Valle 230", "de 9:00 a 12:30 y de 17:00 a 20:30");
@@ -91,6 +57,6 @@ public class Main {
         System.out.println("Sucursal TandilCar Del Valle");
         TandilCarDelValle.descripcion();
         TandilCarDelValle.mostrarVehiculos();
-        TandilCarDelValle.mostrarVehiculos("Motocicleta", 100);
+        TandilCarDelValle.mostrarVehiculos("Motocicleta", 300);
     }
 }

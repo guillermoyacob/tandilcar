@@ -1,14 +1,16 @@
 package paquete.tandilcar;
 
+import java.util.List;
+
 public class Sucursal {
 
-    private String zona;
+    private String nombre;
     private String direccion;
     private String horarios;
     private TodosLosVehiculos VehiculosSucursal = new TodosLosVehiculos();
 
-    public Sucursal(String zona, String direccion, String horarios) {
-        this.zona = zona;
+    public Sucursal(String nombre, String direccion, String horarios) {
+        this.nombre = nombre;
         this.direccion = direccion;
         this.horarios = horarios;
     }
@@ -20,31 +22,71 @@ public class Sucursal {
 
     public void mostrarVehiculos()
     {
-        VehiculosSucursal.mostrarVehiculos();
+        List<Vehiculo> listaDeVehiculos = VehiculosSucursal.devolverVehiculos();
+
+        System.out.println("------------------------- Sucursal " + this.nombre + ": Todos los vehículos --------------------------");
+
+        recorreEImprime(listaDeVehiculos);
+
+        System.out.println("------------------------------------------------------------------------------------------");
     }
 
     public void mostrarVehiculos(String categoria)
     {
-        VehiculosSucursal.mostrarVehiculos(categoria);
+        List<Vehiculo> listaDeVehiculosFiltrados = VehiculosSucursal.devolverVehiculos(categoria);
+
+        System.out.println("------------------------ Sucursal " + this.nombre + ": Todos los vehículos  de categoría " +  categoria + " ----------------------------");
+
+        recorreEImprime(listaDeVehiculosFiltrados);
+
+        System.out.println("-----------------------------------------------------------------------------------------------------------------");
     }
 
     public void mostrarVehiculos(Integer nivelDeDesgaste)
     {
-        VehiculosSucursal.mostrarVehiculos(nivelDeDesgaste);
+        List<Vehiculo> listaDeVehiculosFiltrados = VehiculosSucursal.devolverVehiculos(nivelDeDesgaste);
+
+        System.out.println("------ Sucursal " + this.nombre + ": Todos los vehículos con un nivel de desgaste de hasta " + nivelDeDesgaste + " ---------");
+
+        recorreEImprime(listaDeVehiculosFiltrados);
+
+        System.out.println("---------------------------------------------------------------------------------------------");
     }
 
     public void mostrarVehiculos(String categoria, Integer nivelDeDesgaste)
     {
-        VehiculosSucursal.mostrarVehiculos(categoria, nivelDeDesgaste);
+        List<Vehiculo> listaDeVehiculosFiltrados = VehiculosSucursal.devolverVehiculos(categoria, nivelDeDesgaste);
+
+        System.out.println("------- Sucursal " + this.nombre + ": Todos los vehículos de categoría " + categoria + " y con un nivel de desgaste de hasta " + nivelDeDesgaste + " --------");
+
+        recorreEImprime(listaDeVehiculosFiltrados);
+
+        System.out.println("-------------------------------------------------------------------------------------------------------------------------");
     }
 
     public void descripcion()
     {
-        System.out.println("La sucursal "+this.getZona()+" está ubicada en "+this.getDireccion()+" y sus horarios son "+this.getHorarios());
+        System.out.println("La sucursal "+this.getNombre()+" está ubicada en "+this.getDireccion()+" y sus horarios son "+this.getHorarios());
     }
 
-    public String getZona() {
-        return zona;
+    private void recorreEImprime(List<Vehiculo> listaVehiculos)
+    {
+        for(Vehiculo vehiculo : listaVehiculos)
+        {
+            describirVehiculo(vehiculo);
+        }
+    }
+
+    private void describirVehiculo(Vehiculo vehiculo)
+    {
+        System.out.println(
+                "El vehiculo numero " + vehiculo.getId() + " es del tipo "+ vehiculo.getClass().getSimpleName() + " marca "+ vehiculo.getMARCA() + " modelo " + vehiculo.getMODELO()
+                        + " tiene " + vehiculo.getKm() + " kilometros, funciona a " + vehiculo.getCombustible() + " y un precio de $" + vehiculo.getPrecio() + " pesos argentinos. Su nivel de desgaste es "
+                        + vehiculo.nivelDeDesgaste());
+    }
+
+    public String getNombre() {
+        return nombre;
     }
 
     public String getDireccion() {
