@@ -77,12 +77,16 @@ public class Sucursal {
         }
     }
 
-    private void describirVehiculo(Vehiculo vehiculo)
+    public void describirVehiculo(Vehiculo vehiculo)
     {
         System.out.println(
-                "El vehiculo numero " + vehiculo.getId() + " es del tipo "+ vehiculo.getClass().getSimpleName() + " marca "+ vehiculo.getMARCA() + " modelo " + vehiculo.getMODELO()
+                "El vehiculo numero " + vehiculo.getId() + " es del tipo "+ vehiculo.getClass().getSimpleName() + " marca "+ vehiculo.getMarca() + " modelo " + vehiculo.getModelo()
                         + " tiene " + vehiculo.getKm() + " kilometros, funciona a " + vehiculo.getCombustible() + " y un precio de $" + vehiculo.getPrecio() + " pesos argentinos. Su nivel de desgaste es "
                         + vehiculo.nivelDeDesgaste());
+    }
+
+    public List<Vehiculo> listaVehiculosSucursal(){
+        return VehiculosSucursal.devolverVehiculos();
     }
 
     public String getNombre() {

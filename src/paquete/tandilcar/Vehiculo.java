@@ -6,9 +6,9 @@ public abstract class Vehiculo {
 
     private Double km;
     private String combustible;
-    private final Integer MODELO;
+    private Integer modelo;
     private Integer antiguedad;
-    private final String MARCA;
+    private String marca;
     private Double precio;
     private Boolean serviceAlDia;
     private static Integer ID = 0;
@@ -20,15 +20,23 @@ public abstract class Vehiculo {
 
         this.km = km;
         this.combustible = combustible;
-        this.MODELO = modelo;
-        this.MARCA = marca;
+        this.modelo = modelo;
+        this.marca = marca;
         this.precio = precio;
         this.serviceAlDia = serviceAlDia;
 
-        this.antiguedad = calendario.get(Calendar.YEAR) - modelo;
+        calcularAntiguedad();
 
         Vehiculo.ID++;
         this.id=Vehiculo.ID;
+    }
+
+    private void calcularAntiguedad(){
+        this.antiguedad = calendario.get(Calendar.YEAR) - modelo;
+    }
+
+    public String toString(){
+        return "El vehiculo " + getMarca() + " modelo " + getModelo().toString() + " tiene una antiguedad de " + getAntiguedad().toString() + " años, tiene " + getKm().toString() + " kilómetros hechos, funciona a" + getCombustible() + ", y tiene un precio de " + getPrecio().toString() + " pesos argentinos.";
     }
 
     public abstract Integer nivelDeDesgaste();
@@ -41,8 +49,8 @@ public abstract class Vehiculo {
         return this.combustible;
     }
 
-    public Integer getMODELO() {
-        return this.MODELO;
+    public Integer getModelo() {
+        return this.modelo;
     }
 
     public Integer getAntiguedad()
@@ -50,8 +58,8 @@ public abstract class Vehiculo {
         return antiguedad;
     }
 
-    public String getMARCA() {
-        return this.MARCA;
+    public String getMarca() {
+        return this.marca;
     }
 
     public Double getPrecio() {
@@ -65,4 +73,30 @@ public abstract class Vehiculo {
     public Integer getId() {
         return this.id;
     }
+
+    public void setKm(Double km) {
+        this.km = km;
+    }
+
+    public void setCombustible(String combustible) {
+        this.combustible = combustible;
+    }
+
+    public void setModelo(Integer modelo) {
+        this.modelo = modelo;
+        calcularAntiguedad();
+    }
+
+    public void setMarca(String marca) {
+        this.marca = marca;
+    }
+
+    public void setPrecio(Double precio) {
+        this.precio = precio;
+    }
+
+    public void setServiceAlDia(Boolean serviceAlDia) {
+        this.serviceAlDia = serviceAlDia;
+    }
+
 }
