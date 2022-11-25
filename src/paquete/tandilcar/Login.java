@@ -14,8 +14,9 @@ public class Login {
         registro.put("admin", "1234");
     }
 
-    public String logueo(){
+    public Boolean logueo(){
         String usuario, contrasenia;
+        Boolean admin = false;
         Scanner teclado = new Scanner(System.in);
         System.out.println("Para acceder al sistema ingrese su nombre de usuario: ");
         usuario = teclado.nextLine();
@@ -24,10 +25,11 @@ public class Login {
             contrasenia = teclado.nextLine();
             if (Objects.equals(contrasenia, registro.get(usuario))){
                 System.out.println("Usted ha ingresado correctamente!");
+                admin = true;
             }
         }else{
             System.out.println("Usuario no encontrado.");
         };
-        return usuario;
+        return admin;
     }
 }

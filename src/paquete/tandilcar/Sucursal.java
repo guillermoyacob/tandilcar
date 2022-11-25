@@ -77,11 +77,26 @@ public class Sucursal {
         }
     }
 
+    private Double precioFinalVehiculo(Double precio, Boolean serviceAlDia, Double kilometraje){
+
+        Double precioFinal = precio;
+
+        if(!serviceAlDia){
+            precioFinal = precioFinal * 0.95;
+        }
+
+        if(kilometraje >= 100000){
+            precioFinal = precioFinal * 0.9;
+        }
+
+        return precioFinal;
+    }
+
     public void describirVehiculo(Vehiculo vehiculo)
     {
         System.out.println(
                 "El vehiculo numero " + vehiculo.getId() + " es del tipo "+ vehiculo.getClass().getSimpleName() + " marca "+ vehiculo.getMarca() + " modelo " + vehiculo.getModelo()
-                        + " tiene " + vehiculo.getKm() + " kilometros, funciona a " + vehiculo.getCombustible() + " y un precio de $" + vehiculo.getPrecio() + " pesos argentinos. Su nivel de desgaste es "
+                        + " tiene " + vehiculo.getKm() + " kilometros, funciona a " + vehiculo.getCombustible() + " y un precio de $" + precioFinalVehiculo(vehiculo.getPrecio(), vehiculo.getServiceAlDia(), vehiculo.getKm()).toString() + " pesos argentinos. Su nivel de desgaste es "
                         + vehiculo.nivelDeDesgaste());
     }
 

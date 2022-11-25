@@ -1,12 +1,8 @@
 package paquete.tandilcar;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
 import java.util.Scanner;
 
-public class MenuAdmin {
-
+public class MenuComun {
     Scanner teclado = new Scanner(System.in);
     Sucursal TandilCarCentro = new Sucursal("Centro","Rodriguez 715", "de 9:00 a 12:30 y de 17:00 a 20:30");
     Sucursal TandilCarTerminal = new Sucursal("Terminal","Av. Balbín 600", "de 9:00 a 12:30 y de 17:00 a 20:30");
@@ -23,9 +19,7 @@ public class MenuAdmin {
         int opcion = 0;
         System.out.println("1 - Listar los vehiculos");
         System.out.println("2 - Describir una sucursal");
-        System.out.println("3 - Modificar los datos de una sucursal");
-        System.out.println("4 - Modificar un vehiculo");
-        System.out.println("5 - Salir.");
+        System.out.println("3 - Salir.");
         try {
             opcion = teclado.nextInt();
             teclado.nextLine();
@@ -38,11 +32,7 @@ public class MenuAdmin {
                 break;
             case 2: describirSucursal();
                 break;
-            case 3: modificarSucursal();
-                break;
-            case 4: modificarVehiculo();
-                break;
-            case 5: System.exit(0);
+            case 3: System.exit(0);
                 break;
             default:
                 System.out.println("La opción ingresada no es válida, intente nuevamente");
@@ -112,10 +102,10 @@ public class MenuAdmin {
         } catch (Error e){
             System.out.println("La opción ingresada no es válida, intente nuevamente.");
             opciones();
-            }
+        }
 
         return sucursal;
-}
+    }
     private void imprimeDatos(){
 
         Sucursal sucursal = elegirSucursal();
@@ -173,142 +163,5 @@ public class MenuAdmin {
             System.out.println("No se ha encontrado la sucursal, inténtelo nuevamente.");
         }
         opciones();
-    }
-
-    private void modificarSucursal(){
-
-        Sucursal sucursal = elegirSucursal();
-
-        if (sucursal != null){
-            try {
-                System.out.println("Elija según lo que desea modificar: 1 - Nombre, 2 - Dirección, 3 - Horarios");
-                int opcionAtributos = teclado.nextInt();
-                teclado.nextLine();
-                switch (opcionAtributos){
-                    case 1:
-                        System.out.println("Ingrese el nuevo nombre de la sucursal: ");
-                        String nombre = teclado.nextLine();
-                        sucursal.setNombre(nombre);
-                        System.out.println("El nuevo nombre se ha registrado correctamente.");
-                        sucursal.descripcion();
-                        break;
-                    case 2:
-                        System.out.println("Ingrese la nueva dirección de la sucursal: ");
-                        String direccion = teclado.nextLine();
-                        sucursal.setDireccion(direccion);
-                        System.out.println("La nueva dirección se ha registrado corrrectamente.");
-                        sucursal.descripcion();
-                        break;
-                    case 3:
-                        System.out.println("Ingrese los nuevos horarios de la sucursal: ");
-                        String horarios = teclado.nextLine();
-                        sucursal.setHorarios(horarios);
-                        System.out.println("El nuevo horario se ha registrado correctamente.");
-                        sucursal.descripcion();
-                        break;
-                    default:
-                        System.out.println("La opción ingresada no es válida, intente nuevamente");
-                }
-            }catch (Error e){
-                System.out.println("Ha ocurrido un error durante el procedimiento, por favor vuelva a intentarlo.");
-            }finally {
-                opciones();
-            }
-        }else {
-            System.out.println("No se ha encontrado la sucursal, intentelo nuevamente.");
-            opciones();
-        }
-
-    }
-
-    private void modificarVehiculo(){
-
-        Boolean encontrado = false;
-
-        System.out.println("Ingrese el nombre del vehículo que desea modificar: ");
-        String vehiculoAModificar = teclado.nextLine();
-
-        List<Vehiculo> listaVehiculos = new ArrayList<Vehiculo>();
-
-        listaVehiculos.addAll(TandilCarCentro.listaVehiculosSucursal());
-        listaVehiculos.addAll(TandilCarTerminal.listaVehiculosSucursal());
-        listaVehiculos.addAll(TandilCarDelValle.listaVehiculosSucursal());
-
-        for (Vehiculo vehiculo : listaVehiculos){
-            if (Objects.equals(vehiculoAModificar, vehiculo.getMarca())){
-                encontrado = true;
-                System.out.println("¿Qué atributo desea modificar: 1 - Kilómetros, 2 - Combustible, 3 - Modelo, 4 - Marca, 5 - Precio, 6 - Service al día: ");
-                try {
-                    int opcion = teclado.nextInt();
-                    teclado.nextLine();
-                    switch (opcion){
-                        case 1:
-                            System.out.println("Ingrese el nuevo kilometraje: ");
-                            Double km = teclado.nextDouble();
-                            teclado.nextLine();
-                            vehiculo.setKm(km);
-                            System.out.println("Se ha modificado el kilometraje correctamente.");
-                            break;
-                        case 2:
-                            System.out.println("Ingrese el nuevo tipo de combustible: ");
-                            String combustible = teclado.nextLine();
-                            vehiculo.setCombustible(combustible);
-                            System.out.println("Se ha modificado el tipo de combustible correctamente.");
-                            break;
-                        case 3:
-                            System.out.println("Ingrese el nuevo modelo: ");
-                            Integer modelo = teclado.nextInt();
-                            teclado.nextLine();
-                            vehiculo.setModelo(modelo);
-                            System.out.println("Se ha modificado el modelo y la antiguedad del vehículo correctamente.");
-                            break;
-                        case 4:
-                            System.out.println("Ingrese la nueva marca: ");
-                            String marca = teclado.nextLine();
-                            vehiculo.setMarca(marca);
-                            System.out.println("Se ha modificado la marca correctamente.");
-                            break;
-                        case 5:
-                            System.out.println("Ingrese el nuevo precio: ");
-                            Double precio = teclado.nextDouble();
-                            teclado.nextLine();
-                            vehiculo.setPrecio(precio);
-                            System.out.println("Se ha modificado el precio correctamente.");
-                            break;
-                        case 6:
-                            System.out.println("Ingrese el estado del service al día: 1 - 'Está al día', 2 - 'No está al día: ");
-                            int opcionService = teclado.nextInt();
-                            teclado.nextLine();
-                            switch (opcionService){
-                                case 1:
-                                    vehiculo.setServiceAlDia(true);
-                                    System.out.println("Se ha modificado el estado del service.");
-                                    break;
-                                case 2:
-                                    vehiculo.setServiceAlDia(false);
-                                    System.out.println("Se ha modificado el estado del service.");
-                                    break;
-                                default:
-                                    System.out.println("La opción ingresada es incorrecta, por favor intente nuevamente.");
-                                    break;
-                            }
-                            break;
-                        default:
-                            break;
-                    }
-                }catch (Error e){
-                    System.out.println("La opción ingresada no es válida, intente nuevamente.");
-                }finally {
-                    opciones();
-                }
-            }
-        }
-
-        if (Objects.equals(encontrado, false)){
-            System.out.println("No se ha encontrado ese vehiculo, intente nuevamente");
-                opciones();
-        }
-
-
     }
 }
