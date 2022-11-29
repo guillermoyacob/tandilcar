@@ -7,10 +7,10 @@ import java.util.Scanner;
 
 public class MenuAdmin {
 
-    Scanner teclado = new Scanner(System.in);
-    Sucursal TandilCarCentro = new Sucursal("Centro","Rodriguez 715", "de 9:00 a 12:30 y de 17:00 a 20:30");
-    Sucursal TandilCarTerminal = new Sucursal("Terminal","Av. Balbín 600", "de 9:00 a 12:30 y de 17:00 a 20:30");
-    Sucursal TandilCarDelValle = new Sucursal("Del Valle","Av. Del Valle 230", "de 9:00 a 12:30 y de 17:00 a 20:30");
+    private Scanner teclado = new Scanner(System.in);
+    private Sucursal TandilCarCentro = new Sucursal("Centro","Rodriguez 715", "de 9:00 a 12:30 y de 17:00 a 20:30");
+    private Sucursal TandilCarTerminal = new Sucursal("Terminal","Av. Balbín 600", "de 9:00 a 12:30 y de 17:00 a 20:30");
+    private Sucursal TandilCarDelValle = new Sucursal("Del Valle","Av. Del Valle 230", "de 9:00 a 12:30 y de 17:00 a 20:30");
 
 
     public void start(){
@@ -42,7 +42,8 @@ public class MenuAdmin {
                 break;
             case 4: modificarVehiculo();
                 break;
-            case 5: System.exit(0);
+            case 5:
+                System.out.println("Cerrando sesión. Saliendo del menú de administrador.");;
                 break;
             default:
                 System.out.println("La opción ingresada no es válida, intente nuevamente");
