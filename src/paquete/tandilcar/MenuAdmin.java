@@ -124,7 +124,7 @@ public class MenuAdmin {
         if (sucursal != null){
 
             try {
-                System.out.println("Elija el tipo de filtrado de vehículos: 1 - Todos los vehículos, 2 - Categoría, 3 - Nivel de desgaste, 4 - Categoría y nivel de desgaste:");
+                System.out.println("Elija el tipo de filtrado de vehículos: 1 - Todos los vehículos, 2 - Categoría, 3 - Nivel de desgaste, 4 - Categoría y nivel de desgaste, \n5 - Realice una búsqueda más específica por categoría, kilometraje, combustible, modelo, marca, precio, service al día y nivel de desgaste: ");
                 int opcionFiltrado = teclado.nextInt();
                 teclado.nextLine();
 
@@ -149,6 +149,25 @@ public class MenuAdmin {
                         Integer nivelDesgaste2 = teclado.nextInt();
                         teclado.nextLine();
                         sucursal.mostrarVehiculos(categoria2, nivelDesgaste2);
+                        break;
+                    case 5:
+                        System.out.println("Ingrese la categoría 'Auto', 'Camioneta' o 'Motocicleta': ");
+                        String categoria3 = teclado.nextLine();
+                        System.out.println("Ingrese hasta qué kilometraje desea o presione 'Enter' para omitir: ");
+                        String km = teclado.nextLine();
+                        System.out.println("Ingrese hasta qué combustible desea, si 'GNC', 'Nafta' o 'Diesel': ");
+                        String combustible = teclado.nextLine();
+                        System.out.println("Ingrese el modelo: ");
+                        String modelo = teclado.nextLine();
+                        System.out.println("Ingrese la marca: ");
+                        String marca = teclado.nextLine();
+                        System.out.println("Ingrese hasta qué precio desea o presione 'Enter' para omitir: ");
+                        String precio = teclado.nextLine();
+                        System.out.println("¿Desea que el vehículo tenga el service al día?, Ingrese 's' para sí o 'n' para no: ");
+                        String service = teclado.nextLine();
+                        System.out.println("Ingrese hasta qué nivel de desgaste desea o presione 'Enter' para omitir: ");
+                        String nivelDeDesgaste3 = teclado.nextLine();
+                        sucursal.mostrarVehiculos(km, combustible, modelo, marca, precio, service, categoria3, nivelDeDesgaste3);
                         break;
                     default:
                         System.out.println("No se ha ingresado una opción válida, por favor, inténtelo nuevamente.");

@@ -26,7 +26,7 @@ public class Main {
                 menuComun.start();
             }
 
-            System.out.println("Si desea salir del programa escriba 'salir' o presione enter para continuar.");
+            System.out.println("Si desea salir del programa escriba 'salir' o presione enter para continuar y volver a loguearse.");
             opcion = teclado.nextLine();
             if (Objects.equals(opcion.toLowerCase(), "salir")){
                 salir = true;

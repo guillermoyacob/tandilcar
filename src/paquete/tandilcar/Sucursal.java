@@ -1,6 +1,7 @@
 package paquete.tandilcar;
 
 import java.util.List;
+import java.util.Objects;
 
 public class Sucursal {
 
@@ -62,6 +63,108 @@ public class Sucursal {
         recorreEImprime(listaDeVehiculosFiltrados);
 
         System.out.println("-------------------------------------------------------------------------------------------------------------------------");
+    }
+
+    public void mostrarVehiculos(String km, String combustible, String modelo, String marca, String precio, String service, String categoria, String nivelDeDesgaste){
+
+        Boolean serviceAlDia;
+
+        if (Objects.equals(service, "s")){
+            service = "con service al día";
+            serviceAlDia = true;
+        } else {
+            service = "sin service al día";
+            serviceAlDia = false;
+        }
+
+        if (Objects.equals(km, "") && Objects.equals(precio, "") && Objects.equals(nivelDeDesgaste, "")){
+
+            List<Vehiculo> listaDeVehiculosFiltrados = VehiculosSucursal.devolverVehiculos(combustible, Integer.valueOf(modelo), marca, serviceAlDia, categoria);
+
+            System.out.println("------- Sucursal " + this.nombre + ": Todos los vehículos según el filtrado de categoría " + categoria + " combustible " + combustible + " modelo " + modelo.toString() + " marca " + marca + " y " + service  + " --------");
+
+            recorreEImprime(listaDeVehiculosFiltrados);
+
+            System.out.println("-------------------------------------------------------------------------------------------------------------------------");
+
+        } else if (Objects.equals(km, "") && Objects.equals(precio, "") && !Objects.equals(nivelDeDesgaste, "")) {
+
+            List<Vehiculo> listaDeVehiculosFiltrados = VehiculosSucursal.devolverVehiculos(combustible, Integer.valueOf(modelo), marca, serviceAlDia, categoria, Integer.valueOf(nivelDeDesgaste));
+
+            System.out.println("------- Sucursal " + this.nombre + ": Todos los vehículos según el filtrado de categoría " + categoria + " combustible " + combustible + " modelo " + modelo.toString() + " marca " + marca + " " + service + " y un nivel de desgaste de hasta " + nivelDeDesgaste.toString() + " --------");
+
+            recorreEImprime(listaDeVehiculosFiltrados);
+
+            System.out.println("-------------------------------------------------------------------------------------------------------------------------");
+
+
+        } else if (Objects.equals(km, "") && !Objects.equals(precio, "") && Objects.equals(nivelDeDesgaste, "")) {
+
+            List<Vehiculo> listaDeVehiculosFiltrados = VehiculosSucursal.devolverVehiculos(combustible, Integer.valueOf(modelo), marca, Double.valueOf(precio), serviceAlDia, categoria);
+
+            System.out.println("------- Sucursal " + this.nombre + ": Todos los vehículos según el filtrado de categoría " + categoria + " combustible " + combustible + " modelo " + modelo + " marca " + marca + " con un precio de hasta " + precio + " y " + service + " --------");
+
+            recorreEImprime(listaDeVehiculosFiltrados);
+
+            System.out.println("-------------------------------------------------------------------------------------------------------------------------");
+
+
+        } else if (!Objects.equals(km, "") && Objects.equals(precio, "") && Objects.equals(nivelDeDesgaste, "")) {
+
+            List<Vehiculo> listaDeVehiculosFiltrados = VehiculosSucursal.devolverVehiculos(Double.valueOf(km), combustible, Integer.valueOf(modelo), marca, serviceAlDia, categoria);
+
+            System.out.println("------- Sucursal " + this.nombre + ": Todos los vehículos según el filtrado de categoría " + categoria + " con un kilometraje de hasta " + km + " combustible " + combustible + " modelo " + modelo + " marca " + marca + " y " + service + " --------");
+
+            recorreEImprime(listaDeVehiculosFiltrados);
+
+            System.out.println("-------------------------------------------------------------------------------------------------------------------------");
+
+
+        } else if (!Objects.equals(km, "") && !Objects.equals(precio, "") && Objects.equals(nivelDeDesgaste, "")) {
+
+
+            List<Vehiculo> listaDeVehiculosFiltrados = VehiculosSucursal.devolverVehiculos(Double.valueOf(km), combustible, Integer.valueOf(modelo), marca, Double.valueOf(precio), serviceAlDia, categoria);
+
+            System.out.println("------- Sucursal " + this.nombre + ": Todos los vehículos según el filtrado de categoría " + categoria + " con un kilometraje de hasta " + km + " combustible " + combustible + " modelo " + modelo + " marca " + marca + " con un precio de hasta " + precio + " y " + service + " --------");
+
+            recorreEImprime(listaDeVehiculosFiltrados);
+
+            System.out.println("-------------------------------------------------------------------------------------------------------------------------");
+
+
+        } else if (Objects.equals(km, "") && !Objects.equals(precio, "") && !Objects.equals(nivelDeDesgaste, "")) {
+
+            List<Vehiculo> listaDeVehiculosFiltrados = VehiculosSucursal.devolverVehiculos(combustible, Integer.valueOf(modelo), marca, Double.valueOf(precio), serviceAlDia, categoria, Integer.valueOf(nivelDeDesgaste));
+
+            System.out.println("------- Sucursal " + this.nombre + ": Todos los vehículos según el filtrado de categoría " + categoria + " combustible " + combustible + " modelo " + modelo + " marca " + marca + " con un precio de hasta " + precio + " " + service + " y un nivel de desgaste de hasta " + nivelDeDesgaste.toString() + " --------");
+
+            recorreEImprime(listaDeVehiculosFiltrados);
+
+            System.out.println("-------------------------------------------------------------------------------------------------------------------------");
+
+
+        } else if (!Objects.equals(km, "") && Objects.equals(precio, "") && !Objects.equals(nivelDeDesgaste, "")) {
+
+            List<Vehiculo> listaDeVehiculosFiltrados = VehiculosSucursal.devolverVehiculos(Double.valueOf(km), combustible, Integer.valueOf(modelo), marca, serviceAlDia, categoria, Integer.valueOf(nivelDeDesgaste));
+
+            System.out.println("------- Sucursal " + this.nombre + ": Todos los vehículos según el filtrado de categoría " + categoria + " con un kilometraje de hasta " + km + " combustible " + combustible + " modelo " + modelo + " marca " + marca + " " + service + " y un nivel de desgaste de hasta " + nivelDeDesgaste + " --------");
+
+            recorreEImprime(listaDeVehiculosFiltrados);
+
+            System.out.println("-------------------------------------------------------------------------------------------------------------------------");
+
+
+        } else if (!Objects.equals(km, "") && !Objects.equals(precio, "") && !Objects.equals(nivelDeDesgaste, "")) {
+
+            List<Vehiculo> listaDeVehiculosFiltrados = VehiculosSucursal.devolverVehiculos(Double.valueOf(km), combustible, Integer.valueOf(modelo), marca, Double.valueOf(precio), serviceAlDia, categoria, Integer.valueOf(nivelDeDesgaste));
+
+            System.out.println("------- Sucursal " + this.nombre + ": Todos los vehículos según el filtrado de categoría " + categoria + " con un kilometraje de hasta " + km + " combustible " + combustible + " modelo " + modelo + " marca " + marca + " con un precio de hasta " + precio + " " + service + " y un nivel de desgaste de hasta " + nivelDeDesgaste.toString() + " --------");
+
+            recorreEImprime(listaDeVehiculosFiltrados);
+
+            System.out.println("-------------------------------------------------------------------------------------------------------------------------");
+
+        }
     }
 
     public void descripcion()
