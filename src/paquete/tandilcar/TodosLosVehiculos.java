@@ -13,12 +13,12 @@ public class TodosLosVehiculos {
         listaVehiculos.add(vehiculo);
     }
 
-    public List<Vehiculo> devolverVehiculos()
+    public List<Vehiculo> devolverTodosLosVehiculos()
     {
         return listaVehiculos;
     }
 
-    public List<Vehiculo> devolverVehiculos(String categoria)
+    public List<Vehiculo> devolverVehiculosCategoria(String categoria)
     {
         List<Vehiculo> listaVehiculosFiltrados = new ArrayList<Vehiculo>();
 
@@ -34,7 +34,7 @@ public class TodosLosVehiculos {
         return listaVehiculosFiltrados;
     }
 
-    public List<Vehiculo> devolverVehiculos(Integer nivelDeDesgaste)
+    public List<Vehiculo> devolverVehiculosNDesgaste(Integer nivelDeDesgaste)
     {
         List<Vehiculo> listaVehiculosFiltrados = new ArrayList<Vehiculo>();
 
@@ -46,6 +46,90 @@ public class TodosLosVehiculos {
             }
         }
 
+        return listaVehiculosFiltrados;
+    }
+
+    public List<Vehiculo> devolverVehiculosKm(Double km){
+
+        List<Vehiculo> listaVehiculosFiltrados = new ArrayList<Vehiculo>();
+
+        for(Vehiculo vehiculo : listaVehiculos)
+        {
+            if (vehiculo.getKm() <= km)
+            {
+                listaVehiculosFiltrados.add(vehiculo);
+            }
+        }
+        return listaVehiculosFiltrados;
+    }
+
+    public List<Vehiculo> devolverVehiculosCombustible(String combustible){
+
+        List<Vehiculo> listaVehiculosFiltrados = new ArrayList<Vehiculo>();
+
+        for(Vehiculo vehiculo : listaVehiculos)
+        {
+            if (Objects.equals(combustible, vehiculo.getCombustible()))
+            {
+                listaVehiculosFiltrados.add(vehiculo);
+            }
+        }
+        return listaVehiculosFiltrados;
+    }
+
+    public List<Vehiculo> devolverVehiculosModelo(Integer modelo){
+
+        List<Vehiculo> listaVehiculosFiltrados = new ArrayList<Vehiculo>();
+
+        for(Vehiculo vehiculo : listaVehiculos)
+        {
+            if (Objects.equals(vehiculo.getModelo(), modelo))
+            {
+                listaVehiculosFiltrados.add(vehiculo);
+            }
+        }
+        return listaVehiculosFiltrados;
+    }
+
+    public List<Vehiculo> devolverVehiculosMarca(String marca){
+
+        List<Vehiculo> listaVehiculosFiltrados = new ArrayList<Vehiculo>();
+
+        for(Vehiculo vehiculo : listaVehiculos)
+        {
+            if (Objects.equals(marca, vehiculo.getMarca()))
+            {
+                listaVehiculosFiltrados.add(vehiculo);
+            }
+        }
+        return listaVehiculosFiltrados;
+    }
+
+    public List<Vehiculo> devolverVehiculosPrecio(Double precio){
+
+        List<Vehiculo> listaVehiculosFiltrados = new ArrayList<Vehiculo>();
+
+        for(Vehiculo vehiculo : listaVehiculos)
+        {
+            if (vehiculo.getPrecio() <= precio)
+            {
+                listaVehiculosFiltrados.add(vehiculo);
+            }
+        }
+        return listaVehiculosFiltrados;
+    }
+
+    public List<Vehiculo> devolverVehiculosService(Boolean service){
+
+        List<Vehiculo> listaVehiculosFiltrados = new ArrayList<Vehiculo>();
+
+        for(Vehiculo vehiculo : listaVehiculos)
+        {
+            if (vehiculo.getServiceAlDia() == service)
+            {
+                listaVehiculosFiltrados.add(vehiculo);
+            }
+        }
         return listaVehiculosFiltrados;
     }
 

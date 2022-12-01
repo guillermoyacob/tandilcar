@@ -21,9 +21,9 @@ public class Sucursal {
         VehiculosSucursal.agregarVehiculo(vehiculo);
     }
 
-    public void mostrarVehiculos()
+    public void mostrarTodosLosVehiculos()
     {
-        List<Vehiculo> listaDeVehiculos = VehiculosSucursal.devolverVehiculos();
+        List<Vehiculo> listaDeVehiculos = VehiculosSucursal.devolverTodosLosVehiculos();
 
         System.out.println("------------------------- Sucursal " + this.nombre + ": Todos los vehículos --------------------------");
 
@@ -32,9 +32,9 @@ public class Sucursal {
         System.out.println("------------------------------------------------------------------------------------------");
     }
 
-    public void mostrarVehiculos(String categoria)
+    public void mostrarVehiculosCategoria(String categoria)
     {
-        List<Vehiculo> listaDeVehiculosFiltrados = VehiculosSucursal.devolverVehiculos(categoria);
+        List<Vehiculo> listaDeVehiculosFiltrados = VehiculosSucursal.devolverVehiculosCategoria(categoria);
 
         System.out.println("------------------------ Sucursal " + this.nombre + ": Todos los vehículos  de categoría " +  categoria + " ----------------------------");
 
@@ -43,15 +43,91 @@ public class Sucursal {
         System.out.println("-----------------------------------------------------------------------------------------------------------------");
     }
 
-    public void mostrarVehiculos(Integer nivelDeDesgaste)
+    public void mostrarVehiculosNDesgaste(Integer nivelDeDesgaste)
     {
-        List<Vehiculo> listaDeVehiculosFiltrados = VehiculosSucursal.devolverVehiculos(nivelDeDesgaste);
+        List<Vehiculo> listaDeVehiculosFiltrados = VehiculosSucursal.devolverVehiculosNDesgaste(nivelDeDesgaste);
 
         System.out.println("------ Sucursal " + this.nombre + ": Todos los vehículos con un nivel de desgaste de hasta " + nivelDeDesgaste + " ---------");
 
         recorreEImprime(listaDeVehiculosFiltrados);
 
         System.out.println("---------------------------------------------------------------------------------------------");
+    }
+
+    public void mostrarVehiculosKm(Double km){
+
+        List<Vehiculo> listaDeVehiculosFiltrados = VehiculosSucursal.devolverVehiculosKm(km);
+
+        System.out.println("------- Sucursal " + this.nombre + ": Todos los vehículos con kilometraje hasta " + km.toString() + " --------");
+
+        recorreEImprime(listaDeVehiculosFiltrados);
+
+        System.out.println("-------------------------------------------------------------------------------------------------------------------------");
+    }
+
+    public void mostrarVehiculosCombustible(String combustible){
+
+        List<Vehiculo> listaDeVehiculosFiltrados = VehiculosSucursal.devolverVehiculosCombustible(combustible);
+
+        System.out.println("------- Sucursal " + this.nombre + ": Todos los vehículos con combustible " + combustible + " --------");
+
+        recorreEImprime(listaDeVehiculosFiltrados);
+
+        System.out.println("-------------------------------------------------------------------------------------------------------------------------");
+    }
+
+    public void mostrarVehiculosModelo(Integer modelo){
+
+        List<Vehiculo> listaDeVehiculosFiltrados = VehiculosSucursal.devolverVehiculosModelo(modelo);
+
+        System.out.println("------- Sucursal " + this.nombre + ": Todos los vehículos del modelo " + modelo.toString() + " --------");
+
+        recorreEImprime(listaDeVehiculosFiltrados);
+
+        System.out.println("-------------------------------------------------------------------------------------------------------------------------");
+    }
+
+    public void mostrarVehiculosMarca(String marca){
+
+        List<Vehiculo> listaDeVehiculosFiltrados = VehiculosSucursal.devolverVehiculosMarca(marca);
+
+        System.out.println("------- Sucursal " + this.nombre + ": Todos los vehículos de la marca " + marca + " --------");
+
+        recorreEImprime(listaDeVehiculosFiltrados);
+
+        System.out.println("-------------------------------------------------------------------------------------------------------------------------");
+    }
+
+    public void mostrarVehiculosPrecio(Double precio){
+
+        List<Vehiculo> listaDeVehiculosFiltrados = VehiculosSucursal.devolverVehiculosPrecio(precio);
+
+        System.out.println("------- Sucursal " + this.nombre + ": Todos los vehículos hasta el precio " + precio.toString() + " --------");
+
+        recorreEImprime(listaDeVehiculosFiltrados);
+
+        System.out.println("-------------------------------------------------------------------------------------------------------------------------");
+    }
+
+    public void mostrarVehiculosService(String service){
+
+        Boolean serviceAlDia;
+
+        if (Objects.equals(service.toLowerCase(), "s")){
+            service = "con service al día";
+            serviceAlDia = true;
+        } else {
+            service = "sin service al día";
+            serviceAlDia = false;
+        }
+
+        List<Vehiculo> listaDeVehiculosFiltrados = VehiculosSucursal.devolverVehiculosService(serviceAlDia);
+
+        System.out.println("------- Sucursal " + this.nombre + ": Todos los vehículos " + service + " --------");
+
+        recorreEImprime(listaDeVehiculosFiltrados);
+
+        System.out.println("-------------------------------------------------------------------------------------------------------------------------");
     }
 
     public void mostrarVehiculos(String categoria, Integer nivelDeDesgaste)
@@ -69,7 +145,7 @@ public class Sucursal {
 
         Boolean serviceAlDia;
 
-        if (Objects.equals(service, "s")){
+        if (Objects.equals(service.toLowerCase(), "s")){
             service = "con service al día";
             serviceAlDia = true;
         } else {
@@ -204,7 +280,7 @@ public class Sucursal {
     }
 
     public List<Vehiculo> listaVehiculosSucursal(){
-        return VehiculosSucursal.devolverVehiculos();
+        return VehiculosSucursal.devolverTodosLosVehiculos();
     }
 
     public String getNombre() {

@@ -93,7 +93,7 @@ public class MenuAdmin {
 
     private Sucursal elegirSucursal(){
 
-        System.out.println("Elija la sucursal: 1 - " + TandilCarCentro.getNombre() + ", 2 - " + TandilCarTerminal.getNombre() + ", 3- " + TandilCarDelValle.getNombre());
+        System.out.println("Elija la sucursal: 1 - " + TandilCarCentro.getNombre() + ", 2 - " + TandilCarTerminal.getNombre() + ", 3 - " + TandilCarDelValle.getNombre());
 
         Sucursal sucursal = null;
 
@@ -124,25 +124,60 @@ public class MenuAdmin {
         if (sucursal != null){
 
             try {
-                System.out.println("Elija el tipo de filtrado de vehículos: 1 - Todos los vehículos, 2 - Categoría, 3 - Nivel de desgaste, 4 - Categoría y nivel de desgaste, \n5 - Realice una búsqueda más específica por categoría, kilometraje, combustible, modelo, marca, precio, service al día y nivel de desgaste: ");
+                System.out.println("Elija el tipo de filtrado de vehículos: 1 - Todos los vehículos, 2 - Categoría, 3 - Nivel de desgaste, \n" +
+                        "4 - Kilometraje, 5 - Combustible, 6 - Modelo, 7 - Marca, 8 - Precio, 9 - Service al día, 10 - Categoría y nivel de desgaste \n" +
+                        "11 - Realice una búsqueda más específica por categoría, kilometraje, combustible, modelo, marca, precio, service al día y nivel de desgaste: ");
                 int opcionFiltrado = teclado.nextInt();
                 teclado.nextLine();
 
                 switch (opcionFiltrado){
-                    case 1: sucursal.mostrarVehiculos();
+                    case 1: sucursal.mostrarTodosLosVehiculos();
                         break;
                     case 2:
                         System.out.println("Ingrese la categoría 'Auto', 'Camioneta' o 'Motocicleta': ");
                         String categoria = teclado.nextLine();
-                        sucursal.mostrarVehiculos(categoria);
+                        sucursal.mostrarVehiculosCategoria(categoria);
                         break;
                     case 3:
                         System.out.println("Ingrese el nivel de desgaste: ");
                         Integer nivelDesgaste = teclado.nextInt();
                         teclado.nextLine();
-                        sucursal.mostrarVehiculos(nivelDesgaste);
+                        sucursal.mostrarVehiculosNDesgaste(nivelDesgaste);
                         break;
                     case 4:
+                        System.out.println("Ingrese hasta qué nivel de kilometraje desea mostrar los resultados: ");
+                        Double km = teclado.nextDouble();
+                        teclado.nextLine();
+                        sucursal.mostrarVehiculosKm(km);
+                        break;
+                    case 5:
+                        System.out.println("Ingrese el tipo de combustible que desea desea mostrar en los resultados: ");
+                        String combustible = teclado.nextLine();
+                        sucursal.mostrarVehiculosCombustible(combustible);
+                        break;
+                    case 6:
+                        System.out.println("Ingrese el modelo del vehiculo que desea desea mostrar en los resultados: ");
+                        Integer modelo = teclado.nextInt();
+                        teclado.nextLine();
+                        sucursal.mostrarVehiculosModelo(modelo);
+                        break;
+                    case 7:
+                        System.out.println("Ingrese la marca del vehiculo que desea desea mostrar en los resultados: ");
+                        String marca = teclado.nextLine();
+                        sucursal.mostrarVehiculosMarca(marca);
+                        break;
+                    case 8:
+                        System.out.println("Ingrese hasta qué precio desea desea mostrar en los resultados: ");
+                        Double precio = teclado.nextDouble();
+                        teclado.nextLine();
+                        sucursal.mostrarVehiculosPrecio(precio);
+                        break;
+                    case 9:
+                        System.out.println("¿Desea que los vehículos tengan el service al día?, Ingrese 's' para sí o 'n' para no: ");
+                        String service = teclado.nextLine();
+                        sucursal.mostrarVehiculosService(service);
+                        break;
+                    case 10:
                         System.out.println("Ingrese primero la categoría 'Auto', 'Camioneta' o 'Motocicleta': ");
                         String categoria2 = teclado.nextLine();
                         System.out.println("Ingrese el nivel de desgaste: ");
@@ -150,24 +185,24 @@ public class MenuAdmin {
                         teclado.nextLine();
                         sucursal.mostrarVehiculos(categoria2, nivelDesgaste2);
                         break;
-                    case 5:
+                    case 11:
                         System.out.println("Ingrese la categoría 'Auto', 'Camioneta' o 'Motocicleta': ");
                         String categoria3 = teclado.nextLine();
                         System.out.println("Ingrese hasta qué kilometraje desea o presione 'Enter' para omitir: ");
-                        String km = teclado.nextLine();
+                        String km2 = teclado.nextLine();
                         System.out.println("Ingrese hasta qué combustible desea, si 'GNC', 'Nafta' o 'Diesel': ");
-                        String combustible = teclado.nextLine();
+                        String combustible2 = teclado.nextLine();
                         System.out.println("Ingrese el modelo: ");
-                        String modelo = teclado.nextLine();
+                        String modelo2 = teclado.nextLine();
                         System.out.println("Ingrese la marca: ");
-                        String marca = teclado.nextLine();
+                        String marca2 = teclado.nextLine();
                         System.out.println("Ingrese hasta qué precio desea o presione 'Enter' para omitir: ");
-                        String precio = teclado.nextLine();
+                        String precio2 = teclado.nextLine();
                         System.out.println("¿Desea que el vehículo tenga el service al día?, Ingrese 's' para sí o 'n' para no: ");
-                        String service = teclado.nextLine();
+                        String service2 = teclado.nextLine();
                         System.out.println("Ingrese hasta qué nivel de desgaste desea o presione 'Enter' para omitir: ");
                         String nivelDeDesgaste3 = teclado.nextLine();
-                        sucursal.mostrarVehiculos(km, combustible, modelo, marca, precio, service, categoria3, nivelDeDesgaste3);
+                        sucursal.mostrarVehiculos(km2, combustible2, modelo2, marca2, precio2, service2, categoria3, nivelDeDesgaste3);
                         break;
                     default:
                         System.out.println("No se ha ingresado una opción válida, por favor, inténtelo nuevamente.");
